@@ -196,7 +196,6 @@ button {
   text-transform: uppercase;
   font-family: "Muli-SemiBold";
   font-size: 24px;
-  letter-spacing: 2px;
   transition: all 0.5s;
   position: relative;
   overflow: hidden;
@@ -244,8 +243,12 @@ button:hover:after {
     left: 4%;
   }
 
-  body {
-    font-size: 14px;
+  svg {
+    vertical-align: middle;
+  }
+
+  .btn {
+    font-size: 12px;
   }
 }
 
@@ -271,10 +274,6 @@ button:hover:after {
 
   .wrapper {
     background: none;
-  }
-
-  .container {
-    font-size: 2px;
   }
 }
 
