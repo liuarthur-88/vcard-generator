@@ -1,5 +1,18 @@
 // https://en.wikipedia.org/wiki/VCard
 
+// FORMAT VCARD
+// --------------------------------------------------------------------
+// BEGIN:VCARD
+// VERSION:4.0
+// N:Tan,;Dennis
+// ORG:The Everly Group
+// TITLE:Managing Director
+// ADR:;;8 Tinggian Tunku;50480;Kuala Lumpur Malaysia;Bukit Tunku;
+// TEL;CELL:+60 19 262-6868
+// EMAIL;WORK;INTERNET:dt@theeverlygroup.com
+// END:VCARD
+// --------------------------------------------------------------------
+
 var VCARD_STRING = 'BEGIN:VCARD\nVERSION:4.0\n';
 var VCARD_END = 'END:VCARD';
 var GOOGLE_CHART = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=';
@@ -22,9 +35,9 @@ function vCard_save() {
 
     VCARD_STRING += VCARD_END;
 
-    console.log(VCARD_STRING)
+    console.log(GOOGLE_CHART + encodeURIComponent(VCARD_STRING))
 
-    $('#qr').attr('src', GOOGLE_CHART + VCARD_STRING.replace(/\n/g, '%0A'));
+    $('#qr').attr('src', GOOGLE_CHART + encodeURIComponent(VCARD_STRING));
 
     $("#vCardModal").modal("show");
 
@@ -44,7 +57,7 @@ function build_name() {
     }
 
     VCARD_STRING += 'N:' + last_name + ';' + first_name + '\n';
-    VCARD_STRING += 'FN:' + first_name + ' ' + last_name + '\n';
+    VCARD_STRING += 'FN:' + last_name + ' ' + first_name + '\n';
 
     return true;
 };
@@ -56,13 +69,23 @@ function build_detail() {
     position = $('.position-input').val();
     phone_num = $('.phone-num-input').val();
     email = $('.email-input').val();
-    url = $('.url-input').val();
+    url = $('.url-input').val();    
+    addresses = [
+                $('.street-input').val(),
+                $('.city-input').val(),
+                $('.postal-input').val(),
+                $('.state-input').val(),
+                $('.country-input').val(),
+            ];
+    
+    let address = addresses.join(';');
 
     VCARD_STRING += 'ORG:' + comp_name + '\n';
     VCARD_STRING += 'TITLE:' + position + '\n';
-    VCARD_STRING += 'TEL;TYPE=cell:' + phone_num + '\n';
+    VCARD_STRING += 'TEL;CELL:' + phone_num + '\n';
     VCARD_STRING += 'EMAIL:' + email + '\n';
     VCARD_STRING += 'URL:' + url + '\n';
+    VCARD_STRING += 'ADR:;;' + address + '\n';
 };
 
 function clean() {

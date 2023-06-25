@@ -18,7 +18,7 @@ body {
   font-family: "Muli-Regular";
   font-size: 14px;
   margin: 0;
-  background-image: url("/images/pexels-lukas-917463.jpg");
+  background-image: url("https://picsum.photos/1920/1080");
 }
 
 input,
@@ -57,12 +57,12 @@ a {
 }
 
 .wrapper {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
   background-size: 1920px 1080px;
-  background-image: url("/images/pexels-lukas-917463.jpg");
+  background-image: url("https://picsum.photos/1920/1080");
   /* background: #accffe; */
 }
 
